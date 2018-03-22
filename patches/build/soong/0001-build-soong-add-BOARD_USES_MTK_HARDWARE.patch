@@ -13,21 +13,21 @@ Change-Id: I9affcbc31411c9f1b22ae9ce19e12144012d0cc7
  cc/compiler.go      | 4 ++++
  3 files changed, 16 insertions(+)
 
-diff --git a/android/config.go b/android/config.go
-index 686eeb8..268d121 100644
---- a/android/config.go
-+++ b/android/config.go
-@@ -473,6 +473,10 @@ func (c *deviceConfig) BtConfigIncludeDir() string {
- 	return String(c.config.ProductVariables.BtConfigIncludeDir)
- }
+#diff --git a/android/config.go b/android/config.go
+#index 686eeb8..268d121 100644
+#--- a/android/config.go
+#+++ b/android/config.go
+#@@ -473,6 +473,10 @@ func (c *deviceConfig) BtConfigIncludeDir() string {
+# 	return String(c.config.ProductVariables.BtConfigIncludeDir)
+# }
  
-+func (c *deviceConfig) Mtk_hardware() bool {
-+        return Bool(c.config.ProductVariables.Mtk_hardware)
-+}
-+
- func (c *deviceConfig) NativeCoverageEnabled() bool {
- 	return Bool(c.config.ProductVariables.NativeCoverage)
- }
+#+func (c *deviceConfig) Mtk_hardware() bool {
+#+        return Bool(c.config.ProductVariables.Mtk_hardware)
+#+}
+#+
+# func (c *deviceConfig) NativeCoverageEnabled() bool {
+# 	return Bool(c.config.ProductVariables.NativeCoverage)
+# }
 diff --git a/android/variable.go b/android/variable.go
 index 13456f1..40ecafd 100644
 --- a/android/variable.go
@@ -46,13 +46,13 @@ index 13456f1..40ecafd 100644
  		// treble is true when a build is a Treble compliant device.  This is automatically set when
  		// a build is shipped with Android O, but can be overriden.  This controls such things as
  		// the sepolicy split and enabling the Treble linker namespaces.
-@@ -133,6 +140,7 @@ type productVariables struct {
- 	Eng                        *bool `json:",omitempty"`
- 	EnableCFI                  *bool `json:",omitempty"`
- 	Treble                     *bool `json:",omitempty"`
-+	Mtk_hardware               *bool `json:",omitempty"`
- 
- 	VendorPath *string `json:",omitempty"`
+#@@ -133,6 +140,7 @@ type productVariables struct {
+# 	Eng                        *bool `json:",omitempty"`
+# 	EnableCFI                  *bool `json:",omitempty"`
+# 	Treble                     *bool `json:",omitempty"`
+#+	Mtk_hardware               *bool `json:",omitempty"`
+# 
+# 	VendorPath *string `json:",omitempty"`
  
 diff --git a/cc/compiler.go b/cc/compiler.go
 index aed4480..415eed3 100644
